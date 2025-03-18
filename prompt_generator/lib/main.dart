@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'gemini_service.dart';
 
@@ -101,18 +102,40 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: const Text("Ask"),
                     ),
               const SizedBox(height: 20),
-              const Text(
-                "Prompt:",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 10),
-              SelectableText(
-                _response,
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
+              if (_response.trim().isNotEmpty) ...[
+                const Text(
+                  "Generated Prompt:",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
-              ),
+                const SizedBox(height: 10),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: SelectableText(
+                        _response,
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    InkWell(
+                      onTap: (){
+                        Clipboard.setData(ClipboardData(text: _response));
+                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Copied to clipboard")));
+                      },
+                      child: const Icon(
+                        Icons.copy,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ],
           ),
         ),
