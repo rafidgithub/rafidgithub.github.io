@@ -62,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               const Text(
-                "Input your question below to generate a prompt for other AI models",
+                "Input your prompt below to generate a prompt for other AI models",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 10),
@@ -70,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 controller: _controller,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: "Enter your queries here",
+                  hintText: "Enter your prompt here",
                 ),
               ),
               const SizedBox(height: 20),
@@ -99,7 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 });
                               }
                             },
-                      child: const Text("Ask"),
+                      child: const Text("Generate"),
                     ),
               const SizedBox(height: 20),
               if (_response.trim().isNotEmpty) ...[

@@ -22,7 +22,7 @@ class GeminiService {
           'parts': [
             {
               'text':
-                  'Create a single and meaningful prompt for this query to ask other ai models. Only provide plain text. The query is : $query',
+                  'Create a single and meaningful prompt for this query to ask other ai models. Only provide plain text. \n Start of Query: $query \n End of Query',
             }
           ]
         }
