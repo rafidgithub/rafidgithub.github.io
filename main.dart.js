@@ -71414,7 +71414,7 @@ var $async$rL=A.O(function(c,d){if(c===1){p=d
 s=q}while(true)switch(s){case 0:j=A.fF("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyAAzYqSmCaarEouSJEN2leY3PZULVdgtRY")
 i=t.N
 h=A.at(["Content-Type","application/json"],i,i)
-g=B.cC.kU(A.at(["contents",A.b([A.at(["parts",A.b([A.at(["text","Create a single and meaningful prompt for this query to ask other ai models. Only provide plain text. The query is : "+a],i,i)],t.m0)],i,t.xW)],t.Ud)],i,t.pQ))
+g=B.cC.kU(A.at(["contents",A.b([A.at(["parts",A.b([A.at(["text","Create a single and meaningful prompt for this query to ask other ai models. Only provide plain text. \n Start of Query: "+a+" \n End of Query"],i,i)],t.m0)],i,t.xW)],t.Ud)],i,t.pQ))
 q=3
 s=6
 return A.T(A.aC9(j,g,h),$async$rL)
@@ -71447,9 +71447,9 @@ ar(){this.aP()
 this.d.V(new A.aaC(this))},
 L(a){var s,r,q,p=this,o=null
 if(p.r)s=B.z5
-else s=new A.DT(!p.f?o:new A.aaz(p),o,o,o,o,o,o,!1,o,!0,B.OK,o)
+else s=new A.DT(!p.f?o:new A.aaz(p),o,o,o,o,o,o,!1,o,!0,B.OJ,o)
 r=t.F
-s=A.b([B.OJ,B.wv,new A.xs(p.d,B.BJ,B.wR,B.wx,B.wy,!0,o),B.ww,s,B.ww],r)
+s=A.b([B.OK,B.wv,new A.xs(p.d,B.BJ,B.wR,B.wx,B.wy,!0,o),B.ww,s,B.ww],r)
 q=p.e
 if(B.c.kg(q).length!==0)B.b.O(s,A.b([B.ON,B.wv,A.ah4(A.b([A.akm(new A.wG(q,B.Mu,o)),B.JD,A.akJ(!1,!0,B.BH,o,!0,o,o,o,o,o,o,o,o,o,new A.aaA(p,a),o,o,o,o)],r),B.c1,B.by,B.dW)],r))
 return new A.wp(new A.rO(B.OL,new A.Mf(o,o,1/0,56),o),new A.dr(B.hX,new A.H1(A.ag_(s,B.bs,B.by,B.dW),o),o),o)}}
@@ -75008,7 +75008,7 @@ B.am=A.b(s([]),t.oU)
 B.BI=new A.iQ("\ufffc",null,null,!0,!0,B.am)
 B.k1=new A.aZ(B.o,1,B.y,-1)
 B.Gw=new A.h7(4,B.dm,B.k1)
-B.BJ=new A.uE(null,null,null,null,null,null,null,null,null,null,"Enter your queries here",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,B.Gw,!0,null,null,null)
+B.BJ=new A.uE(null,null,null,null,null,null,null,null,null,null,"Enter your prompt here",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,B.Gw,!0,null,null,null)
 B.BL=new A.e6(0.4,1,B.aj)
 B.BM=new A.e6(0.0825,0.2075,B.aj)
 B.BO=new A.e6(0,0.5,B.ak)
@@ -76795,9 +76795,9 @@ B.NP=new A.j(!0,B.D,null,"Roboto",B.K,null,null,null,null,null,null,null,null,nu
 B.Nd=new A.j(!0,B.o,null,"Roboto",B.K,null,null,null,null,null,null,null,null,null,null,null,null,B.e,null,null,null,"blackHelsinki labelMedium",null,null,null,null)
 B.Nn=new A.j(!0,B.o,null,"Roboto",B.K,null,null,null,null,null,null,null,null,null,null,null,null,B.e,null,null,null,"blackHelsinki labelSmall",null,null,null,null)
 B.OI=new A.cS(B.Oa,B.Lg,B.Mf,B.Nc,B.Np,B.KH,B.LP,B.KL,B.MX,B.NC,B.Mp,B.NE,B.NP,B.Nd,B.Nn)
+B.OJ=new A.i4("Generate",null,null,null,null,null,null,null,null)
 B.Mw=new A.j(!0,null,null,null,null,null,20,B.c6,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)
-B.OJ=new A.i4("Input your question below to generate a prompt for other AI models",null,B.Mw,null,null,null,null,null,null)
-B.OK=new A.i4("Ask",null,null,null,null,null,null,null,null)
+B.OK=new A.i4("Input your prompt below to generate a prompt for other AI models",null,B.Mw,null,null,null,null,null,null)
 B.OL=new A.i4("Prompt Generator",null,null,null,null,null,null,null,null)
 B.Mx=new A.j(!0,null,null,null,null,null,18,B.c6,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)
 B.ON=new A.i4("Generated Prompt:",null,B.Mx,null,null,null,null,null,null)
