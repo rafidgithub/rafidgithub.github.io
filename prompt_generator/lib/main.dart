@@ -31,7 +31,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final FocusNode _focusNode = FocusNode();
   final TextEditingController _controller = TextEditingController();
+
   String _response = "";
 
   bool btnEnabled = false;
@@ -66,11 +68,22 @@ class _MyHomePageState extends State<MyHomePage> {
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 10),
-              TextField(
-                controller: _controller,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: "Enter your prompt here",
+              Focus(
+                focusNode: _focusNode,
+                onKey: (FocusNode node, RawKeyEvent event) {
+                  if (event.isKeyPressed(LogicalKeyboardKey.enter)) {
+                    _generatePrompt();
+                    return KeyEventResult.handled; // Consume the event
+                  }
+                  return KeyEventResult
+                      .ignored; // Let the event pass through if not Enter
+                },
+                child: TextField(
+                  controller: _controller,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: "Enter your prompt here",
+                  ),
                 ),
               ),
               const SizedBox(height: 20),
@@ -80,24 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       onPressed: !btnEnabled
                           ? null
                           : () async {
-                              String query = _controller.text.trim();
-                              if (query.isNotEmpty) {
-                                setState(() {
-                                  loading = true;
-                                });
-                                // _getResponse(query);
-                                await GeminiService().getAnswer(
-                                  query,
-                                  onSuccess: (response) {
-                                    setState(() {
-                                      _response = response;
-                                    });
-                                  },
-                                );
-                                setState(() {
-                                  loading = false;
-                                });
-                              }
+                              await _generatePrompt();
                             },
                       child: const Text("Generate"),
                     ),
@@ -125,9 +121,11 @@ class _MyHomePageState extends State<MyHomePage> {
                       width: 20,
                     ),
                     InkWell(
-                      onTap: (){
+                      onTap: () {
                         Clipboard.setData(ClipboardData(text: _response));
-                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Copied to clipboard")));
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text("Copied to clipboard")));
                       },
                       child: const Icon(
                         Icons.copy,
@@ -141,5 +139,26 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
     );
+  }
+
+  Future<void> _generatePrompt() async {
+    String query = _controller.text.trim();
+    if (query.isNotEmpty) {
+      setState(() {
+        loading = true;
+      });
+      // _getResponse(query);
+      await GeminiService().getAnswer(
+        query,
+        onSuccess: (response) {
+          setState(() {
+            _response = response;
+          });
+        },
+      );
+      setState(() {
+        loading = false;
+      });
+    }
   }
 }
